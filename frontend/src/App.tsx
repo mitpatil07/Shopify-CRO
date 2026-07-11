@@ -178,90 +178,96 @@ export default function App() {
       setLoadingBrief(null);
     }
   };
-
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-fade-in font-sans">
-      
-      {/* Top Header */}
-      <header className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-10 pb-6 border-b border-slate-800">
-        <div>
-          <div className="flex items-center gap-2">
-            <span className="p-2 bg-indigo-600 rounded-lg text-white">
-              <Zap className="h-6 w-6 animate-pulse-slow" />
-            </span>
-            <h1 className="text-3xl font-extrabold text-white tracking-tight">
-              Shopify <span className="text-gradient">CRO Opportunity Engine</span>
-            </h1>
-          </div>
-          <p className="text-slate-400 text-sm mt-1 max-w-xl">
-            Audit Shopify storefronts, catalog distribution, PDP tags, and homepage hooks with deterministically prioritized conversion audits.
-          </p>
-        </div>
+    <div className="min-h-screen bg-[#faf9f6]/40 pb-16 font-sans">
+      <div className="h-1.5 w-full bg-orange-500"></div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 animate-fade-in">
         
-        {/* Settings Panel */}
-        <SettingsPanel
-          apiKey={apiKey}
-          setApiKey={setApiKey}
-          showSettings={showSettings}
-          setShowSettings={setShowSettings}
-          showKey={showKey}
-          setShowKey={setShowKey}
-        />
-      </header>
-
-      {/* Input URL Forms */}
-      <AuditForm
-        storeUrl={storeUrl}
-        setStoreUrl={setStoreUrl}
-        competitorUrl={competitorUrl}
-        setCompetitorUrl={setCompetitorUrl}
-        isAuditing={isAuditing}
-        onSubmit={handleAudit}
-      />
-
-      {/* Loading spinners */}
-      {isAuditing && <ScraperLoader stages={stages} />}
-
-      {/* Graceful Scrape Blocks / Warning panels */}
-      {errorMsg && (
-        <section className="glass-panel rounded-2xl p-6 border-rose-500/20 bg-rose-500/5 mb-8 max-w-3xl mx-auto flex gap-4 items-start animate-slide-up">
-          <AlertCircle className="h-6 w-6 text-rose-400 flex-shrink-0 mt-0.5" />
+        {/* Floating Top Header Panel */}
+        <header className="glass-panel p-6 mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 shadow-[0_4px_20px_-2px_rgba(28,25,23,0.03)] border border-stone-200">
           <div>
-            <h2 className="text-base font-bold text-rose-400">Scraping Blocked or Incomplete Assortment</h2>
-            <p className="text-slate-300 text-sm mt-1">{errorMsg}</p>
-            <p className="text-slate-400 text-xs mt-3">
-              * Note: Many premium Shopify setups use Cloudflare or other firewalls that block automated crawlers, or they might disable public JSON API outputs. This tool strictly adheres to collected data and never fabricates mock metrics.
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="p-2 bg-orange-500 rounded-xl text-white shadow-sm shadow-orange-500/20">
+                <Zap className="h-5 w-5 animate-pulse-slow" />
+              </span>
+              <h1 className="text-2xl md:text-3xl font-extrabold text-stone-900 tracking-tighter">
+                Shopify <span className="text-orange-500 font-black">CRO Opportunity Engine</span>
+              </h1>
+              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-orange-50 border border-orange-100 text-orange-600 tracking-wider uppercase font-mono shadow-sm">
+                v1.0
+              </span>
+            </div>
+            <p className="text-stone-500 text-xs md:text-sm mt-2 max-w-2xl leading-relaxed">
+              Conduct instant conversion audits on any Shopify storefront. Extract catalog metadata, compute price spreads, check PDP hooks, and compile prioritized ICE-scored opportunities.
             </p>
           </div>
-        </section>
-      )}
-
-      {/* Result Metrics */}
-      {evidence && (
-        <div className="space-y-8 animate-slide-up">
-          {/* Section 1: Scraped Store Metrics */}
-          <EvidenceDashboard evidence={evidence} />
-
-          {/* Section 2: Audit Opportunities cards list */}
-          <OpportunityList
-            opportunities={opportunities}
-            selectedOpp={selectedOpp}
-            setSelectedOpp={setSelectedOpp}
-            generateBrief={generateBrief}
-            briefs={briefs}
-            loadingBrief={loadingBrief}
-          />
-
-          {/* Section 3: Competitor Comparison Dashboard */}
-          {competitorEvidence && comparisonResult && (
-            <CompetitorCompare
-              evidence={evidence}
-              competitorEvidence={competitorEvidence}
-              comparisonResult={comparisonResult}
+          
+          <div className="flex-shrink-0">
+            <SettingsPanel
+              apiKey={apiKey}
+              setApiKey={setApiKey}
+              showSettings={showSettings}
+              setShowSettings={setShowSettings}
+              showKey={showKey}
+              setShowKey={setShowKey}
             />
-          )}
-        </div>
-      )}
+          </div>
+        </header>
+
+        {/* Input URL Forms */}
+        <AuditForm
+          storeUrl={storeUrl}
+          setStoreUrl={setStoreUrl}
+          competitorUrl={competitorUrl}
+          setCompetitorUrl={setCompetitorUrl}
+          isAuditing={isAuditing}
+          onSubmit={handleAudit}
+        />
+
+        {/* Loading spinners */}
+        {isAuditing && <ScraperLoader stages={stages} />}
+
+        {/* Graceful Scrape Blocks / Warning panels */}
+        {errorMsg && (
+          <section className="glass-panel rounded-2xl p-6 border-rose-200 bg-rose-50/50 mb-8 max-w-3xl mx-auto flex gap-4 items-start animate-slide-up">
+            <AlertCircle className="h-6 w-6 text-rose-600 flex-shrink-0 mt-0.5" />
+            <div>
+              <h2 className="text-base font-bold text-rose-700">Scraping Blocked or Incomplete Assortment</h2>
+              <p className="text-stone-800 text-sm mt-1">{errorMsg}</p>
+              <p className="text-stone-500 text-xs mt-3">
+                * Note: Many premium Shopify setups use Cloudflare or other firewalls that block automated crawlers, or they might disable public JSON API outputs. This tool strictly adheres to collected data and never fabricates mock metrics.
+              </p>
+            </div>
+          </section>
+        )}
+
+        {/* Result Metrics */}
+        {evidence && (
+          <div className="space-y-8 animate-slide-up">
+            {/* Section 1: Scraped Store Metrics */}
+            <EvidenceDashboard evidence={evidence} />
+
+            {/* Section 2: Audit Opportunities cards list */}
+            <OpportunityList
+              opportunities={opportunities}
+              selectedOpp={selectedOpp}
+              setSelectedOpp={setSelectedOpp}
+              generateBrief={generateBrief}
+              briefs={briefs}
+              loadingBrief={loadingBrief}
+            />
+
+            {/* Section 3: Competitor Comparison Dashboard */}
+            {competitorEvidence && comparisonResult && (
+              <CompetitorCompare
+                evidence={evidence}
+                competitorEvidence={competitorEvidence}
+                comparisonResult={comparisonResult}
+              />
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

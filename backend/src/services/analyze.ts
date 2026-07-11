@@ -67,7 +67,7 @@ async function callNvidiaAPI(
 
   for (let attempt = 1; attempt <= retries; attempt++) {
     try {
-      const response = await axios.post(NVIDIA_API_URL, data, { headers, timeout: 25000 });
+      const response = await axios.post(NVIDIA_API_URL, data, { headers, timeout: 60000 });
       const text = response.data?.choices?.[0]?.message?.content;
       if (!text) {
         throw new Error("Empty response from Nvidia API");

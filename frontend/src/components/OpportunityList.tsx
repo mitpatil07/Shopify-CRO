@@ -23,20 +23,20 @@ export default function OpportunityList({
 
   const getAreaColor = (area: string) => {
     switch (area) {
-      case 'catalog': return 'bg-amber-500/10 text-amber-400 border-amber-500/20';
-      case 'collections': return 'bg-blue-500/10 text-blue-400 border-blue-500/20';
-      case 'pdp': return 'bg-purple-500/10 text-purple-400 border-purple-500/20';
-      case 'cart': return 'bg-rose-500/10 text-rose-400 border-rose-500/20';
-      case 'merchandising': return 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20';
-      case 'homepage': return 'bg-sky-500/10 text-sky-400 border-sky-500/20';
-      default: return 'bg-slate-500/10 text-slate-400 border-slate-500/20';
+      case 'catalog': return 'bg-amber-50 text-amber-700 border-amber-200';
+      case 'collections': return 'bg-blue-50 text-blue-700 border-blue-200';
+      case 'pdp': return 'bg-purple-50 text-purple-700 border-purple-200';
+      case 'cart': return 'bg-rose-50 text-rose-700 border-rose-200';
+      case 'merchandising': return 'bg-emerald-50 text-emerald-700 border-emerald-200';
+      case 'homepage': return 'bg-sky-50 text-sky-700 border-sky-200';
+      default: return 'bg-stone-50 text-stone-700 border-stone-200';
     }
   };
 
   const getScoreColor = (score: number) => {
-    if (score >= 12) return 'text-rose-400 border-rose-500/30 bg-rose-500/5';
-    if (score >= 6) return 'text-amber-400 border-amber-500/30 bg-amber-500/5';
-    return 'text-emerald-400 border-emerald-500/30 bg-emerald-500/5';
+    if (score >= 12) return 'text-rose-700 border-rose-200 bg-rose-50 font-bold';
+    if (score >= 6) return 'text-orange-700 border-orange-200 bg-orange-50 font-bold';
+    return 'text-emerald-700 border-emerald-200 bg-emerald-50 font-bold';
   };
 
   const renderCard = (opp: Opportunity, index: number) => (
@@ -48,12 +48,12 @@ export default function OpportunityList({
         opp.area === 'pdp' ? 'border-l-purple-500' :
         opp.area === 'cart' ? 'border-l-rose-500' :
         opp.area === 'homepage' ? 'border-l-sky-500' : 'border-l-emerald-500'
-      } ${selectedOpp?.finding === opp.finding ? 'ring-1 ring-indigo-500' : 'glass-panel-hover'}`}
+      } ${selectedOpp?.finding === opp.finding ? 'ring-2 ring-orange-500' : 'glass-panel-hover'}`}
     >
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="space-y-2 flex-1">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-400">
+            <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-stone-100 border border-stone-200 text-stone-600">
               Rank #{index + 1}
             </span>
             <span className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded border ${getAreaColor(opp.area)}`}>
@@ -64,25 +64,25 @@ export default function OpportunityList({
             </span>
           </div>
           
-          <h3 className="text-base font-bold text-slate-100">{opp.finding}</h3>
-          <p className="text-slate-400 text-sm line-clamp-2">{opp.recommendation}</p>
+          <h3 className="text-base font-bold text-stone-900">{opp.finding}</h3>
+          <p className="text-stone-650 text-sm line-clamp-2">{opp.recommendation}</p>
         </div>
 
         {/* Scores */}
-        <div className="flex items-center gap-3 bg-slate-950/60 p-3 rounded-lg border border-slate-900 flex-shrink-0">
+        <div className="flex items-center gap-3 bg-stone-50 p-3 rounded-lg border border-stone-150 flex-shrink-0 shadow-sm">
           <div className="text-center px-2">
-            <div className="text-slate-500 text-[9px] uppercase font-bold">Impact</div>
-            <div className="text-slate-200 text-sm font-bold font-sans">{opp.impact}/5</div>
+            <div className="text-stone-500 text-[9px] uppercase font-bold">Impact</div>
+            <div className="text-stone-900 text-sm font-bold font-sans">{opp.impact}/5</div>
           </div>
-          <div className="border-r border-slate-800 h-6"></div>
+          <div className="border-r border-stone-200 h-6"></div>
           <div className="text-center px-2">
-            <div className="text-slate-500 text-[9px] uppercase font-bold">Conf</div>
-            <div className="text-slate-200 text-sm font-bold font-sans">{opp.confidence}/5</div>
+            <div className="text-stone-500 text-[9px] uppercase font-bold">Conf</div>
+            <div className="text-stone-900 text-sm font-bold font-sans">{opp.confidence}/5</div>
           </div>
-          <div className="border-r border-slate-800 h-6"></div>
+          <div className="border-r border-stone-200 h-6"></div>
           <div className="text-center px-2">
-            <div className="text-slate-500 text-[9px] uppercase font-bold">Effort</div>
-            <div className="text-slate-200 text-sm font-bold font-sans">{opp.effort}/5</div>
+            <div className="text-stone-500 text-[9px] uppercase font-bold">Effort</div>
+            <div className="text-stone-900 text-sm font-bold font-sans">{opp.effort}/5</div>
           </div>
         </div>
 
@@ -90,7 +90,7 @@ export default function OpportunityList({
         <div className="flex md:flex-col justify-end gap-2 flex-shrink-0">
           <button
             onClick={() => setSelectedOpp(selectedOpp?.finding === opp.finding ? null : opp)}
-            className="px-4 py-2 bg-slate-900 border border-slate-800 hover:bg-slate-800 text-slate-200 rounded-lg text-xs font-semibold"
+            className="px-4 py-2 bg-white border border-stone-200 hover:bg-stone-50 hover:text-stone-900 text-stone-700 rounded-lg text-xs font-bold shadow-sm transition-all"
           >
             {selectedOpp?.finding === opp.finding ? 'Hide Details' : 'View Action'}
           </button>
@@ -99,40 +99,40 @@ export default function OpportunityList({
 
       {/* Slide-out details */}
       {selectedOpp?.finding === opp.finding && (
-        <div className="mt-5 pt-5 border-t border-slate-800/80 animate-slide-up space-y-4">
+        <div className="mt-5 pt-5 border-t border-stone-150 animate-slide-up space-y-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             <div>
-              <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">CRO Recommendation</h4>
-              <div className="bg-slate-950/40 p-4 rounded-xl border border-slate-900 text-sm text-slate-300 leading-relaxed">
+              <h4 className="text-xs font-bold text-stone-500 uppercase tracking-wider mb-2">CRO Recommendation</h4>
+              <div className="bg-stone-50/55 p-4 rounded-xl border border-stone-150 text-sm text-stone-700 leading-relaxed shadow-sm">
                 {opp.recommendation}
               </div>
             </div>
             <div>
-              <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Catalog Evidence Citations</h4>
-              <div className="bg-slate-950/40 p-4 rounded-xl border border-slate-900 space-y-2">
+              <h4 className="text-xs font-bold text-stone-500 uppercase tracking-wider mb-2">Catalog Evidence Citations</h4>
+              <div className="bg-stone-50/55 p-4 rounded-xl border border-stone-150 space-y-2 shadow-sm">
                 {opp.evidence_refs.length > 0 ? (
                   opp.evidence_refs.map((ref, rIdx) => (
-                    <div key={rIdx} className="flex gap-2 items-start text-xs text-slate-400">
-                      <span className="h-1.5 w-1.5 rounded-full bg-indigo-500 mt-1.5 flex-shrink-0"></span>
+                    <div key={rIdx} className="flex gap-2 items-start text-xs text-stone-605">
+                      <span className="h-1.5 w-1.5 rounded-full bg-orange-500 mt-1.5 flex-shrink-0"></span>
                       <span>{ref}</span>
                     </div>
                   ))
                 ) : (
-                  <p className="text-xs text-slate-500 italic">No specific products isolated. Recommendation based on aggregated metadata indexes.</p>
+                  <p className="text-xs text-stone-400 italic">No specific products isolated. Recommendation based on aggregated metadata indexes.</p>
                 )}
               </div>
             </div>
           </div>
 
           {/* Test Blueprint Trigger */}
-          <div className="pt-4 border-t border-slate-900 flex justify-between items-center flex-wrap gap-4">
-            <span className="text-xs text-slate-500">
+          <div className="pt-4 border-t border-stone-150 flex justify-between items-center flex-wrap gap-4">
+            <span className="text-xs text-stone-500 font-medium">
               Generate a test blueprint layout including hypothesis statements, tracking parameters, and minimum runtime.
             </span>
             <button
               onClick={() => generateBrief(opp)}
               disabled={loadingBrief === opp.finding}
-              className="flex items-center gap-1.5 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white rounded-lg text-xs font-bold transition-all shadow-md"
+              className="flex items-center gap-1.5 px-4 py-2 bg-orange-500 hover:bg-orange-600 disabled:opacity-50 text-white rounded-lg text-xs font-bold transition-all shadow-md shadow-orange-500/10"
             >
               {loadingBrief === opp.finding ? (
                 <>
@@ -152,38 +152,38 @@ export default function OpportunityList({
 
           {/* Experiment Brief display */}
           {briefs[opp.finding] && (
-            <div className="bg-gradient-to-br from-indigo-950/20 to-purple-950/10 p-5 rounded-xl border border-indigo-500/20 space-y-4 animate-slide-up">
-              <h4 className="text-sm font-bold text-indigo-300 flex items-center gap-2">
-                <Zap className="h-4 w-4 text-indigo-400 animate-pulse" />
+            <div className="bg-orange-50/20 p-5 rounded-xl border border-orange-200 space-y-4 animate-slide-up shadow-sm">
+              <h4 className="text-sm font-bold text-orange-700 flex items-center gap-2">
+                <Zap className="h-4 w-4 text-orange-500" />
                 A/B Experiment Brief: {opp.area.toUpperCase()} Test
               </h4>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                 <div>
-                  <span className="text-slate-400 block mb-1 font-semibold uppercase tracking-wider text-[10px]">Hypothesis</span>
-                  <p className="text-slate-200 bg-slate-950/50 p-2.5 rounded border border-slate-900">{briefs[opp.finding].hypothesis}</p>
+                  <span className="text-stone-500 block mb-1 font-semibold uppercase tracking-wider text-[10px]">Hypothesis</span>
+                  <p className="text-stone-850 bg-white p-2.5 rounded border border-stone-150 shadow-sm">{briefs[opp.finding].hypothesis}</p>
                 </div>
                 <div>
-                  <span className="text-slate-400 block mb-1 font-semibold uppercase tracking-wider text-[10px]">Variant Description</span>
-                  <p className="text-slate-200 bg-slate-950/50 p-2.5 rounded border border-slate-900">{briefs[opp.finding].variantDescription}</p>
+                  <span className="text-stone-500 block mb-1 font-semibold uppercase tracking-wider text-[10px]">Variant Description</span>
+                  <p className="text-stone-850 bg-white p-2.5 rounded border border-stone-150 shadow-sm">{briefs[opp.finding].variantDescription}</p>
                 </div>
                 <div>
-                  <span className="text-slate-400 block mb-1 font-semibold uppercase tracking-wider text-[10px]">Primary Metric</span>
-                  <span className="inline-block px-2.5 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded font-semibold">
+                  <span className="text-stone-500 block mb-1 font-semibold uppercase tracking-wider text-[10px]">Primary Metric</span>
+                  <span className="inline-block px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-250 rounded font-semibold shadow-sm">
                     {briefs[opp.finding].primaryMetric}
                   </span>
                 </div>
                 <div>
-                  <span className="text-slate-400 block mb-1 font-semibold uppercase tracking-wider text-[10px]">Minimum Runtime</span>
-                  <span className="inline-block px-2.5 py-1 bg-blue-500/10 text-blue-400 border border-blue-500/20 rounded font-semibold">
+                  <span className="text-stone-500 block mb-1 font-semibold uppercase tracking-wider text-[10px]">Minimum Runtime</span>
+                  <span className="inline-block px-2.5 py-1 bg-blue-50 text-blue-700 border border-blue-250 rounded font-semibold shadow-sm">
                     {briefs[opp.finding].minimumRuntime}
                   </span>
                 </div>
               </div>
 
               <div className="text-xs font-sans">
-                <span className="text-slate-400 block mb-2 font-semibold uppercase tracking-wider text-[10px]">Shopify Step-by-Step Implementation</span>
-                <ol className="list-decimal list-inside space-y-1.5 text-slate-300">
+                <span className="text-stone-500 block mb-2 font-semibold uppercase tracking-wider text-[10px]">Shopify Step-by-Step Implementation</span>
+                <ol className="list-decimal list-inside space-y-1.5 text-stone-700">
                   {briefs[opp.finding].implementationSteps.map((step, sIdx) => (
                     <li key={sIdx} className="pl-1 leading-relaxed">{step}</li>
                   ))}
@@ -199,16 +199,16 @@ export default function OpportunityList({
   return (
     <section className="space-y-6">
       <div className="flex items-center gap-2">
-        <Award className="h-5 w-5 text-indigo-400" />
-        <h2 className="text-xl font-bold text-slate-100 font-sans">Prioritized CRO Opportunities</h2>
-        <span className="text-xs px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-indigo-400 font-mono">
+        <Award className="h-5 w-5 text-orange-500" />
+        <h2 className="text-xl font-bold text-stone-900 font-sans">Prioritized CRO Opportunities</h2>
+        <span className="text-xs px-2 py-0.5 rounded bg-orange-50 border border-orange-200 text-orange-655 font-mono font-semibold">
           Formula: (Impact * Confidence) / Effort
         </span>
       </div>
 
       <div className="grid grid-cols-1 gap-4">
         {opportunities.length === 0 ? (
-          <div className="p-6 text-center border border-dashed border-slate-800 rounded-xl text-slate-500 text-sm font-sans">
+          <div className="p-6 text-center border border-dashed border-stone-200 rounded-xl text-stone-400 bg-white text-sm font-sans shadow-sm">
             No audits to show. Input a Shopify store URL above.
           </div>
         ) : (
@@ -219,7 +219,7 @@ export default function OpportunityList({
               <div className="pt-2 text-center">
                 <button
                   onClick={() => setShowAllOpportunities(!showAllOpportunities)}
-                  className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:bg-slate-800 transition-colors text-xs font-bold font-sans animate-fade-in"
+                  className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-lg bg-white border border-stone-200 text-stone-700 hover:text-stone-900 hover:bg-stone-50 transition-all text-xs font-bold font-sans shadow-sm animate-fade-in"
                 >
                   {showAllOpportunities ? (
                     <>
