@@ -35,7 +35,7 @@ export default function AuditForm({
                 id="target-url"
                 type="text"
                 required
-                placeholder="https://saddlebackleather.com"
+                placeholder="https://your-shopify-store.com"
                 value={storeUrl}
                 onChange={(e) => setStoreUrl(e.target.value)}
                 disabled={isAuditing}
@@ -56,7 +56,7 @@ export default function AuditForm({
               <input
                 id="competitor-url"
                 type="text"
-                placeholder="https://bulletproof.com"
+                placeholder="https://competitor-store.com"
                 value={competitorUrl}
                 onChange={(e) => setCompetitorUrl(e.target.value)}
                 disabled={isAuditing}

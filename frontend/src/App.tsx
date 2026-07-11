@@ -17,6 +17,8 @@ import type {
   CompareResponse
 } from './types';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 export default function App() {
   // Input settings states
   const [storeUrl, setStoreUrl] = useState('');
@@ -87,7 +89,7 @@ export default function App() {
       // Stage 1: Scrape store metadata/homepage
       updateStage(1, 'loading');
       
-      const response = await fetch('http://localhost:5000/api/audit', {
+      const response = await fetch(`${API_URL}/api/audit`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ url: storeUrl, apiKey: apiKey || undefined }),
@@ -136,7 +138,7 @@ export default function App() {
   };
 
   const runCompetitorComparison = async (url1: string, url2: string, key?: string) => {
-    const response = await fetch('http://localhost:5000/api/compare', {
+    const response = await fetch(`${API_URL}/api/compare`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ url1, url2, apiKey: key || undefined }),
@@ -156,7 +158,7 @@ export default function App() {
     setLoadingBrief(opp.finding);
 
     try {
-      const response = await fetch('http://localhost:5000/api/experiment-brief', {
+      const response = await fetch(`${API_URL}/api/experiment-brief`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ opportunity: opp, storeUrl: evidence?.storeUrl, apiKey: apiKey || undefined }),
