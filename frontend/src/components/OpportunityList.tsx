@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Award, ChevronDown, ChevronUp, RefreshCw, Zap } from 'lucide-react';
+import { Award, ChevronDown, ChevronUp, RefreshCw, FlaskConical } from 'lucide-react';
 import type { Opportunity, ExperimentBrief } from '../types';
 
 interface OpportunityListProps {
@@ -143,7 +143,7 @@ export default function OpportunityList({
                 'Brief Created (See Below)'
               ) : (
                 <>
-                  <Zap className="h-3.5 w-3.5" />
+                  <FlaskConical className="h-3.5 w-3.5" />
                   Generate Experiment Brief
                 </>
               )}
@@ -154,7 +154,7 @@ export default function OpportunityList({
           {briefs[opp.finding] && (
             <div className="bg-orange-50/20 p-5 rounded-xl border border-orange-200 space-y-4 animate-slide-up shadow-sm">
               <h4 className="text-sm font-bold text-orange-700 flex items-center gap-2">
-                <Zap className="h-4 w-4 text-orange-500" />
+                <FlaskConical className="h-4 w-4 text-orange-500 animate-pulse" />
                 A/B Experiment Brief: {opp.area.toUpperCase()} Test
               </h4>
               

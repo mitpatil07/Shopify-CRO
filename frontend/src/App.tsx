@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Zap, AlertCircle } from 'lucide-react';
+import { AlertCircle } from 'lucide-react';
 import SettingsPanel from './components/SettingsPanel';
 import AuditForm from './components/AuditForm';
 import ScraperLoader from './components/ScraperLoader';
@@ -186,16 +186,18 @@ export default function App() {
         {/* Floating Top Header Panel */}
         <header className="glass-panel p-6 mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 shadow-[0_4px_20px_-2px_rgba(28,25,23,0.03)] border border-stone-200">
           <div>
-            <div className="flex flex-wrap items-center gap-3">
-              <span className="p-2 bg-orange-500 rounded-xl text-white shadow-sm shadow-orange-500/20">
-                <Zap className="h-5 w-5 animate-pulse-slow" />
-              </span>
-              <h1 className="text-2xl md:text-3xl font-extrabold text-stone-900 tracking-tighter">
-                Shopify <span className="text-orange-500 font-black">CRO Opportunity Engine</span>
+            <div className="flex flex-wrap items-center gap-2">
+              <div className="flex items-center gap-1 bg-stone-50 border border-stone-200 px-3 py-1.5 rounded-xl shadow-sm">
+                <span className="font-black text-lg tracking-tighter text-stone-900 font-sans">
+                  Shopify<span className="text-orange-500 font-black">.</span>
+                </span>
+                <span className="bg-orange-500 text-white text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded ml-0.5 font-sans shadow-sm">
+                  CRO
+                </span>
+              </div>
+              <h1 className="text-xl md:text-2xl font-bold text-stone-750 tracking-tight font-sans">
+                Opportunity Engine
               </h1>
-              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-orange-50 border border-orange-100 text-orange-600 tracking-wider uppercase font-mono shadow-sm">
-                v1.0
-              </span>
             </div>
             <p className="text-stone-500 text-xs md:text-sm mt-2 max-w-2xl leading-relaxed">
               Conduct instant conversion audits on any Shopify storefront. Extract catalog metadata, compute price spreads, check PDP hooks, and compile prioritized ICE-scored opportunities.
